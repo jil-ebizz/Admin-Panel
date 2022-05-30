@@ -1,0 +1,127 @@
+<!-- tap on top starts-->
+    <div class="tap-top"><i-feather name="chevrons-up"></i-feather></div>
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <div class="page-body-wrapper">
+          
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>User report management</h3>
+                            </div>
+                            <div class="col-6">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a> <i-feather name="home"></i-feather></a>
+                                    </li>
+                                    <!-- <li class="breadcrumb-item">Dashboard</li> -->
+                                    <li class="breadcrumb-item active">User report management</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container-fluid starts-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Zero Configuration  Starts-->
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="table-responsive big tableinsidetable">
+                                    
+                                        <div class="d-flex justify-content-between p-2">
+                                            <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+                                              <option [ngValue]="2">2 items per page</option>
+                                              <option [ngValue]="4">4 items per page</option>
+                                              <option [ngValue]="6">6 items per page</option>
+                                            </select>
+                                        
+                                              <div class="mb-3 row">
+                                                <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Search:</label>
+                                                <div class="col-xs-3 col-sm-auto">
+                                                    <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="user_filter.reported">
+                                                </div>
+                                                <span class="col col-form-label" *ngIf="service.loading$ | async">Loading...</span>
+                                            </div>
+                                        </div>                 
+                                          <table class="table table-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                              <th [class.active]="order === 'id'" (click)="setOrder('id')">Sr No. <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                                              <th  [class.active]="order === 'reported'"
+                                              (click)="setOrder('reported')"
+                                              class="mdl-data-table__cell--non-numeric">Reported <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                                              <th  [class.active]="order === 'rtime'"
+                                              (click)="setOrder('rtime')">Report time <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                                              <th [class.active]="order === 'date'"
+                                              (click)="setOrder('date')">Date <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                                              <th [class.active]="order === 'reportby'"
+                                              (click)="setOrder('reportby')">Report by <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                                              <th [class.active]="order === 'reportissue'"
+                                              (click)="setOrder('reportissue')">Reported issue <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                                              <th>Send message</th>
+                                              <th>Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let users of reports$ | async  | filterBy: user_filter | orderBy: order:reverse:caseInsensitive">
+                                                    <td>{{users.id}}</td>
+                                                    <td><ngb-highlight [result]="users.reported" [term]="service.searchTerm"></ngb-highlight></td>
+                                                    <td><ngb-highlight [result]="users.rtime" [term]="service.searchTerm"></ngb-highlight></td>
+                                                    <td><ngb-highlight [result]="users.date" [term]="service.searchTerm"></ngb-highlight></td>
+                                                    <td><ngb-highlight [result]="users.reportby" [term]="service.searchTerm"></ngb-highlight></td>
+                                                    <td><ngb-highlight [result]="users.reportissue" [term]="service.searchTerm"></ngb-highlight></td>
+                                                    <td>
+                                                        <button class="btn btn-primary sendmessagebtn" (click)="open(content)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalfat" data-whatever="@mdo" data-bs-original-title="" title="">Send message</button>
+                                                        <ng-template #content let-c="close" let-d="dismiss">
+                                                            <div class="modal-header">
+                                                              <h4 class="modal-title" id="modal-basic-title">Send message</h4>
+                                                              <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="form-group">
+                                                                        <textarea class="form-control" placeholder="Type message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary modelbtn" type="button" data-bs-dismiss="modal" (click)="c('Save click')" data-bs-original-title="" title="">Cancel</button>
+                                                                <button class="btn btn-primary" type="button" data-bs-original-title="" (click)="c('Save click')" title="">Send</button>
+                                                            </div>
+                                                          </ng-template>
+                            
+                                                    </td>
+                                                    
+                                                    <td class="d-flex pd-class">
+                                                        <a href="" class="eddit-btn" data-bs-original-title="" title="">Suspend</a>
+                                                        <a href="" class="delate-btn" data-bs-original-title="" title="">Block</a>
+                                                    </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="d-flex justify-content-between p-2">
+                                            <!-- <ngb-pagination
+                                              [collectionSize]="(total$ | async)!" [(page)]="service.page"  (pageChange)="page = ($event)" [pageSize]="service.pageSize">
+                                            </ngb-pagination> -->
+
+                                            <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page"  (pageChange)="page = ($event)" [boundaryLinks]="true" [pageSize]="service.pageSize"></ngb-pagination>
+                                
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Zero Configuration  Ends-->
+
+                    </div>
+                </div>
+                <!-- Container-fluid Ends-->
+            </div>
+        </div>
+</div>

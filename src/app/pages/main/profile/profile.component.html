@@ -1,0 +1,183 @@
+<!-- tap on top starts-->
+    <div class="tap-top"><i-feather name="chevrons-up"></i-feather></div>
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        
+        <div class="page-body-wrapper">
+           
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Profile management</h3>
+                            </div>
+                            <div class="col-6">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="app-manage-event.html"> <i-feather name="home"></i-feather></a>
+                                    </li>
+                                    <li class="breadcrumb-item">App Data Management </li>
+                                    <li class="breadcrumb-item active">Profile</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container-fluid starts-->
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <!-- Zero Configuration  Starts-->
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form novalidate [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                                        <div class="profile-management-wra">
+                                            <div class="row">
+                                                <h3 class="change-pass-title mt-0 mb-2">✧ General Setting</h3>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group mb-2">
+                                                        <label for="exampleInputEmail1">First  name</label>
+                                                        <input type="text" class="form-control" id="userNameId" placeholder="John" formControlName="first_name" [ngClass]="{ 'is-invalid': submitted && f['first_name'].errors }" aria-describedby="emailHelp">
+                                                        <div *ngIf="submitted && f['first_name'].errors" class="invalid-feedback">
+                                                            <div *ngIf="f['first_name'].errors['required']">First is required</div>
+                                                            <div *ngif="f['first_name'].errors['minLength']">First name must be at least 3 characters</div>
+                                                            <div *ngIf="f['first_name'].errors['pattern']">Only alphabets alllowed</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group mb-2">
+                                                        <label for="exampleInputEmail1">Last name</label>
+                                                        <input type="text" class="form-control" id="userlNameId"  placeholder="poole" formControlName="last_name" [ngClass]="{ 'is-invalid': submitted && f['last_name'].errors }" aria-describedby="emailHelp">
+                                                        <div *ngIf="submitted && f['last_name'].errors" class="invalid-feedback">
+                                                            <div *ngIf="f['last_name'].errors['required']">Last is required</div>
+                                                            <div *ngIf="f['last_name'].errors['minLength']">Last name must be at least 3 characters</div>
+                                                            <div *ngIf="f['last_name'].errors['pattern']">Only aphabets alllowed</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Upload profile photo</label>
+                                                        <div class="file-upload">
+                                                            <div class="file-select">
+                                                                <div class="file-select-button"></div>
+                                                                <div class="file-select-name" id="noFile"></div>
+                                                                <input type="file" name="chooseFile" class="chooseFile form-control"  id="userFileId" accept=".png, .jpg, .jpeg" #fileInput (change)="onProfileChange($event)" formControlName="file" [ngClass]="{ 'is-invalid': submitted && f['file'].errors }" data-bs-original-title="" title="">
+                                                                <img [src]="url" 
+                                                                     [style.height.px]="150"
+                                                                     [style.margin.px]="2"/>
+                                                                     <img :src= />
+                                                                <div *ngIf="submitted && f['file'].errors" class="invalid-feedback">
+                                                                    <div *ngIf="f['file'].errors['required']">Profile photo is required</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="mb-3">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Upload profile photo</label>
+                                                        <div class="file-upload">
+                                                            <div class="file-select">
+                                                
+                                                               <div>
+                                                                <input type='file' id="imageUpload" class="form-control" formControlName="profile_pic" accept=".png, .jpg, .jpeg" #fileInput (change)="onProfileChange($event)" />
+                                                                    <img  [src]="url"
+                                                                    [style.height.px]="150"
+                                                                    [style.margin.px]="2" />
+                                                                    <img :src={{users.avatar}} />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Email address</label>
+                                                        <input type="email" class="form-control" placeholder="email@gmail.com" id="userEmailId" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" aria-describedby="emailHelp">
+                                                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                                            <div *ngIf="f['email'].errors['pattern']">This emial is invalid</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                            </div>
+                                            <div class="profile-management-btn">
+                                                <button class="btn btn-secondary mt-4 modelbtn" style="margin-right: 10px;" data-bs-original-title="" title="">Cancel</button>
+                                                <button class="btn btn-primary mt-4 btn-block" type="submit">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form novalidate [formGroup]="passwordSetting" (ngSubmit)="onSaved()">
+                                        <div class="profile-management-wra">
+                                            <div class="row">
+                                                <h3 class="change-pass-title mt-0 mb-2">✧ Password Setting</h3>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group mb-2">
+                                                        <label for="exampleInputEmail1">Current password</label>
+                                                        <input type="password" class="form-control" placeholder="********" id="userPasword" formControlName="password" [ngClass]="{ 'is-invalid': saved && g['password'].errors }" aria-describedby="emailHelp">
+                                                        <div *ngIf="saved && g['password'].errors" class="invalid-feedback">
+                                                            <div *ngIf="g['password'].errors['required']">Current password is required</div>
+                                                            <div *ngIf="g['password'].errors['minLength']">The password length must be greater than or equal to 6</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group mb-2">
+                                                        <label for="exampleInputEmail1">New password</label>
+                                                        <input type="password" class="form-control" placeholder="********" id="userNewPassword" formControlName="newPassword" [ngClass]="{ 'is-invalid': saved && g['newPassword'].errors }" aria-describedby="emailHelp">
+                                                        <div *ngIf="saved && g['newPassword'].errors" class="invalid-feedback">
+                                                            <div *ngIf="g['newPassword'].errors['required']">New password is required</div>
+                                                            <div *ngIf="g['newPassword'].errors['minLength']">The password length must be greater than or equal to 6</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group mb-2">
+                                                        <label for="exampleInputEmail1">Confirm password</label>
+                                                        <input type="password" class="form-control" placeholder="********" id="userCPassword" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': saved && g['confirmPassword'].errors }" aria-describedby="emailHelp">
+                                                        <div *ngIf="saved && g['confirmPassword'].errors" class="invalid-feedback">
+                                                            <div *ngIf="g['confirmPassword'].errors['required']">Confirm password is required</div>
+                                                            <div *ngIf="g['confirmPassword'].errors['match']">Password does not match.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="profile-management-btn">
+                                                <button class="btn btn-secondary mt-4 modelbtn" style="margin-right: 10px;" data-bs-original-title="" title="">Cancel</button>
+                                                <button class="btn btn-primary mt-4 btn-block" type="submit">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Zero Configuration  Ends-->
+
+                    </div>
+                </div>
+
+                <!-- Container-fluid Ends-->
+
+            </div>
+        </div>
+</div>
+
+
+ 

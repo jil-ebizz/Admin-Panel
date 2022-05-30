@@ -1,0 +1,64 @@
+<!-- Page Sidebar Start-->
+<div class="sidebar-wrapper">
+  <div>
+    <div class="logo-wrapper">
+      <a>
+        <img
+          class="img-fluid for-light"
+          src="/assets/images/choiadmin.png"
+          alt=""
+        />
+        <img
+          class="img-fluid for-dark"
+          src="/assets/images/choiadmin.png"
+          alt=""
+        />
+      </a>
+      <!-- <div class="back-btn"><i class="fa fa-angle-left"></i></div> -->
+      <div class="toggle-sidebar" (click)="loadData()"><i-feather name="grid"> </i-feather></div>
+    </div>
+    <div class="logo-icon-wrapper">
+      <a><img class="img-fluid" src="/assets/images/favicon.png" alt="" /></a>
+    </div>
+    <nav class="sidebar-main">
+      <div class="left-arrow" id="left-arrow">
+        <i-feather name="arrow-left"></i-feather>
+      </div>
+      <div id="sidebar-menu">
+      
+          <ul class="sidebar-links" id="simple-bar">
+            <ngx-simplebar>
+            <li class="sidebar-list">
+              <a
+                class="sidebar-link  sidebar-title link-nav"
+                 routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/dashboard']">
+                <i-feather name="home"> </i-feather><span>Dashboard</span></a>
+            </li>
+            <li class="sidebar-list">
+              <a
+                class="sidebar-link sidebar-title link-nav"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/user-management']"
+                ><i-feather name="users"> </i-feather><span>User Management</span></a>
+            </li>
+            <li class="sidebar-list">
+              <a
+                class="sidebar-link sidebar-title link-nav"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/user-report']"
+                ><i-feather name="file"> </i-feather><span>User report management</span></a>
+            </li>
+            <li class="sidebar-list">
+              <a
+                class="sidebar-link sidebar-title link-nav"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/notification']"
+                ><i-feather name="bell"> </i-feather><span>Notification management</span></a>
+            </li>
+        </ngx-simplebar>
+          </ul>  
+      </div>
+      <div class="right-arrow" id="right-arrow">
+        <i-feather name="arrow-right"></i-feather>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- Page Sidebar Ends-->

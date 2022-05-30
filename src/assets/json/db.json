@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "imageUrl": "assets/images/sort_both.png",
+      "name": "Richa",
+      "email": "xyz@gmail.com",
+      "birthdate": "Jan 10, 2002",
+      "age": 22,
+      "gender": "Female",
+      "status": "Active"
+    },
+    {
+      "id": 1,
+      "imageUrl": "assets/images/sort_both.png",
+      "name": "Russi",
+      "email": "abc@gmail.com",
+      "birthdate": "Feb 5, 2000",
+      "age": 22,
+      "gender": "Male",
+      "status": "Active"
+    }
+  ],
+  "loginUsers": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "123456789"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

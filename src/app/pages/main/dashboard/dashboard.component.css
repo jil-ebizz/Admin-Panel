@@ -1,0 +1,30 @@
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+#chartt {
+  max-width: 380px;
+  margin: 35px auto;
+  padding: 0;
+}
+
+#charttt {
+  padding: 0;
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.earning-card.card .card-body {
+   overflow: inherit !important; 
+}
+
+.datepicker{
+  top: 259px !important;
+  left: 345px !important;
+  right: auto !important;
+  position: fixed !important;
+}
+.abcd{
+  color: black;
+}

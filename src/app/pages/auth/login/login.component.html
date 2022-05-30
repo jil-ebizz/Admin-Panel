@@ -1,0 +1,54 @@
+<!-- login page start-->
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-12 p-0">
+                <div class="login-card">
+                    <div>
+                        
+                        <div class="login-main" >
+                            <form class="theme-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <div>
+                                    <a class="logo" href="#"><img class="img-fluid for-light login-l-img" src="/assets/images/logo/Group.png" alt="looginpage"><img class="img-fluid for-dark" src="/assets/images/logo/logo_dark.png" alt="looginpage"></a>
+                                </div>
+                                <h4>Sign in to account</h4>
+                                <p>Enter your email & password to login</p>
+                                
+                                <div class="form-group">
+                                    <label class="col-form-label">Email Address</label>
+                                    <input formControlName="email" class="form-control" type="email" id="userEmailId" formControlName="email" [ngClass]="{'is-invalid': displayMessage?.['email'] }" placeholder="Test@gmail.com">
+                                    <span class="invalid-feedback"> 
+                                        {{displayMessage?.['email']}}
+                                    </span>
+                                </div>
+                                <div class="form-group" style="position: relative;">
+                                    <label class="col-form-label">Password</label>
+                                    <input formControlName="password" class="form-control" type="password" formControlName="password" [ngClass]="{'is-invalid': displayMessage?.['password'] }"  type="password" [type]="hide ? 'password' : 'text'" placeholder="*********">
+                                    <div class="show-hide" (click)="hide = !hide">{{hide ? 'show' : 'hide'}}</div>
+                                    <span class="invalid-feedback"> 
+                                        {{displayMessage?.['password']}}
+                                    </span>  
+                                    <!-- <div class="show-hide" (click)="togglePassword()">{{Password ? 'Show' : 'Hide'}}</div>-->
+                                </div>                              
+                                <div class="form-group mb-0">
+                                    <div class="row" style="align-items: flex-start;">
+                                        <div class="col-7">
+                                            <div class="checkbox p-0">
+                                                <input id="checkbox1" type="checkbox">
+                                                <label class="text-muted" for="checkbox1">Remember password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <a class="link for-pass" routerLink="/auth/forgot-password" >Forgot password?</a>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary mt-3 btn-block" [disabled]="loginForm.invalid==true" type="submit">Sign in</button>
+                                </div>
+
+                            </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+      
